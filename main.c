@@ -5,7 +5,7 @@
 #include <math.h>
 #include "sqlite3.h"
 
-/* --- Yapý Tanımları --- */
+/* --- Yapı Tanımları --- */
 typedef struct Course {
     char courseName[50];
     double yazili1, yazili2, sozlu, average, participation_index;
