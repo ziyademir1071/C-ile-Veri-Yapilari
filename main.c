@@ -86,7 +86,7 @@ void aiCareerAdvisor(std *s) {
     double sozAvg = (sozC > 0) ? (sozPuan / sozC) : 0;
     double fark = sayAvg - sozAvg;
 
-    printf("\n=== KARÝYER REHBERÝ: %s %s ===", s->firstName, s->lastName);
+    printf("\n=== KARİYER REHBERİ: %s %s ===", s->firstName, s->lastName);
     if (fabs(fark) <= 10.0 && sayAvg >= 60 && sozAvg >= 60) {
         printf("\nAlan: ESIT AGIRLIK (EA)\nOnerilen: Hukuk, Psikoloji, Isletme veya Iktisat.");
     } else if (sayAvg > sozAvg) {
