@@ -5,7 +5,7 @@
 #include <math.h>
 #include "sqlite3.h"
 
-/* --- Yapı Tanımları --- */
+/* --- YapÃ½ TanÄ±mlarÄ± --- */
 typedef struct Course {
     char courseName[50];
     double yazili1, yazili2, sozlu, average, participation_index;
@@ -22,7 +22,7 @@ typedef struct Student {
     struct Student *next;
 } std;
 
-/* --- Yardımcı Fonksiyonlar --- */
+/* --- YardÄ±mcÄ± Fonksiyonlar --- */
 void stringToUpper(char *str) {
 	int i;
     for (i = 0; str[i]; i++) str[i] = toupper((unsigned char)str[i]);
@@ -41,7 +41,7 @@ double getValidGrade(char *gradeType) {
     }
 }
 
-/* --- AI Analiz Motorları --- */
+/* --- AI Analiz MotorlarÄ± --- */
 void aiCourseAnalyzer(course *c) {
     c->average = (c->yazili1 + c->yazili2 + c->sozlu) / 3.0;
     c->participation_index = c->sozlu - ((c->yazili1 + c->yazili2) / 2.0);
@@ -86,7 +86,7 @@ void aiCareerAdvisor(std *s) {
     double sozAvg = (sozC > 0) ? (sozPuan / sozC) : 0;
     double fark = sayAvg - sozAvg;
 
-    printf("\n=== KARİYER REHBERİ: %s %s ===", s->firstName, s->lastName);
+    printf("\n=== KARÃYER REHBERÃ: %s %s ===", s->firstName, s->lastName);
     if (fabs(fark) <= 10.0 && sayAvg >= 60 && sozAvg >= 60) {
         printf("\nAlan: ESIT AGIRLIK (EA)\nOnerilen: Hukuk, Psikoloji, Isletme veya Iktisat.");
     } else if (sayAvg > sozAvg) {
@@ -97,7 +97,7 @@ void aiCareerAdvisor(std *s) {
     printf("\n===========================================\n");
 }
 
-/* --- Görselleştirme (ASCII Grafik) --- */
+/* --- GÃ¶rselleÅŸtirme (ASCII Grafik) --- */
 void displayPerformanceGraph(std *s) {
     if (!s || !s->courses) return;
     printf("\n--- BASARI GRAFIGI (%s %s) ---", s->firstName, s->lastName);
@@ -112,7 +112,7 @@ void displayPerformanceGraph(std *s) {
     printf("\n-------------------------------------------\n");
 }
 
-/* --- SQLite Veritabanı İşlemleri --- */
+/* --- SQLite VeritabanÄ± Ä°ÅŸlemleri --- */
 void initDB() {
     sqlite3 *db;
     sqlite3_open("akademik.db", &db);
@@ -168,7 +168,7 @@ std* loadDB() {
     sqlite3_close(db); return head;
 }
 
-/* --- Liste Yönetimi --- */
+/* --- Liste YÃ¶netimi --- */
 std* insertSorted(std *head, std *newS) {
     if (!head || newS->gpa >= head->gpa) { newS->next = head; return newS; }
     std *curr = head;
@@ -187,7 +187,7 @@ std* deleteStudent(std *head, int n) {
     free(curr); return head;
 }
 
-/* --- Ana Menü --- */
+/* --- Ana MenÃ¼ --- */
 int main() {
     initDB(); std *head = loadDB(); int sec, n;
     while (1) {
@@ -223,3 +223,4 @@ int main() {
     }
     return 0;
 }
+
